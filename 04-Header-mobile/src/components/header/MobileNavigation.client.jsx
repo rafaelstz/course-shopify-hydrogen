@@ -24,7 +24,7 @@ export default function MobileNavigation({collections, isOpen, setIsOpen}) {
               {collections.map((collection) => (
                 <li className="border-b border-gray-200" key={collection.id}>
                   <Link
-                    className="group py-5 text-gray-700 flex items-center justify-between"
+                    className="group py-5 text-black flex items-center justify-between"
                     to={`/collections/${collection.handle}`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -53,7 +53,7 @@ function CloseIcon() {
     >
       <path
         d="M1 17L17 1M1 1L17 17"
-        stroke="black"
+        stroke="white"
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"

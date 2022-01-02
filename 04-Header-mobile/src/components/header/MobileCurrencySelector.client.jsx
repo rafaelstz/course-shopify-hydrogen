@@ -18,7 +18,7 @@ export default function MobileCurrencySelector() {
   );
 
   return (
-    <div className="mt-8 rounded border border-gray-200 w-full">
+    <div className="text-black mt-8 rounded border border-gray-200 w-full">
       <Listbox onChange={setCountry}>
         {({open}) => (
           <>

@@ -18,17 +18,17 @@ export default function Header({collections, storeName}) {
       >
         <div className="h-full flex lg:flex-col place-content-between lg:max-w-7xl m-auto">
           <div className="text-center w-full flex justify-between items-center">
+            <MobileNavigation
+              collections={collections}
+              isOpen={isMobileNavOpen}
+              setIsOpen={setIsMobileNavOpen}
+            />
             <Link
               className="font-black uppercase text-3xl tracking-widest"
               to="/"
             >
               {storeName}
             </Link>
-            <MobileNavigation
-              collections={collections}
-              isOpen={isMobileNavOpen}
-              setIsOpen={setIsMobileNavOpen}
-            />
             <Navigation collections={collections} storeName={storeName} />
             <div className="flex">
               <div className="flex items-center mr-8">
