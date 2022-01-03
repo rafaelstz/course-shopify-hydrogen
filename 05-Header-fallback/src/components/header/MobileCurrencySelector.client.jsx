@@ -24,7 +24,7 @@ export default function MobileCurrencySelector() {
           <>
             <Listbox.Button className="w-full flex justify-between text-sm items-center py-5 px-7">
               {selectedCountry.currency.isoCode}
-              <ArrowIcon isOpen={open} />
+              <ArrowIcon isOpen={open} color="black" />
             </Listbox.Button>
             <Listbox.Options className="w-full px-3 pb-2 text-lg">
               <Listbox.Option

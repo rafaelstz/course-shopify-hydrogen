@@ -224,7 +224,7 @@ function CartEmpty() {
       <button
         type="button"
         onClick={closeCart}
-        className={BUTTON_PRIMARY_CLASSES}
+        className={BUTTON_TERTIARY_CLASSES}
       >
         Continue Shopping
       </button>
