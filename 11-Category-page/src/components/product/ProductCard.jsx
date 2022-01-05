@@ -11,12 +11,12 @@ export default function ProductCard({product}) {
   }
 
   return (
-    <div className="text-xl mb-4 relative">
+    <div className="text-xl mb-4 relative max-w-sm mx-auto">
       <Link to={`/products/${product.handle}`}>
         <div className="rounded-lg shadow-xl mb-2 relative flex items-center justify-center overflow-hidden object-cover h-96">
           {selectedVariant.image ? (
             <Image
-              className="bg-white absolute w-full h-full transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain hover:scale-110"
+              className="bg-white absolute w-full h-full transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain scale-125 hover:scale-150"
               image={selectedVariant.image}
             />
           ) : null}

@@ -61,9 +61,9 @@ export default function Collection({
         ))}
       </ul>
 
-      {/* {hasNextPage && ( */}
+      {hasNextPage && (
         <LoadMoreProducts startingCount={collectionProductCount} />
-      {/* )} */}
+      )}
     </Layout>
   );
 }
