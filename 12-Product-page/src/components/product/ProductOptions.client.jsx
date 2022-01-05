@@ -27,13 +27,22 @@ export default function ProductOptions() {
                       checked={checked}
                       onChange={() => setSelectedOption(name, value)}
                     />
-                    <div
-                      className={`py-2 px-4 text-lg border cursor-pointer rounded-full md:text-md ${
-                        checked ? 'bg-gray-900 text-white' : 'text-gray-900'
-                      }`}
-                    >
-                      {value}
-                    </div>
+                    {name === 'Color' ? (
+                      <div
+                        style={{backgroundColor: value}}
+                        className={`w-12 h-12 border-2 cursor-pointer rounded-full
+                        ${checked && 'border-tertiary'}`}
+                      />
+                    ) : (
+                      <div
+                        className={`py-2 px-4 text-lg border cursor-pointer rounded-full md:text-md
+                        ${
+                          checked ? 'bg-gray-900 text-white' : 'text-gray-900'
+                        }`}
+                      >
+                        {value}
+                      </div>
+                    )}
                   </label>
                 );
               })}
