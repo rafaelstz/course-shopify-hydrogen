@@ -326,10 +326,10 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@shopify/hydrogen@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@shopify/hydrogen/-/hydrogen-0.8.2.tgz#6a07cfa13ef37ba56e729e8533f6434118095ada"
-  integrity sha512-IS6rFtQAvCKQgvdNhf7XYYLJJqdhPNSXpNdGzBbv3j40reEjlwvkGzkVUms+ReTSih+J9tne9cUZGHICEqgSHQ==
+"@shopify/hydrogen@^0.8.3":
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/@shopify/hydrogen/-/hydrogen-0.8.3.tgz#144e51490f38137a7be9a2638137a421d17cf488"
+  integrity sha512-LCm32lhcrQ6k+WS8+o9s4NwUd4gFAcp1O9hVyxojGXqFUB1B1iO44upyJfVOg4MkzNlZobpRyx8d7JLwwgYlJw==
   dependencies:
     "@vitejs/plugin-react" "^1.1.1"
     connect "^3.7.0"
@@ -1257,9 +1257,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.4.17:
-  version "1.4.44"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.44.tgz#8a41923afdd6ef5ddabe001626036ba5d1d64ae6"
-  integrity sha512-tHGWiUUmY7GABK8+DNcr474cnZDTzD8x1736SlDosVH8+/vRJeqfaIBAEHFtMjddz/0T4rKKYsxEc8BwQRdBpw==
+  version "1.4.45"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.45.tgz#cf1144091d6683cbd45a231954a745f02fb24598"
+  integrity sha512-czF9eYVuOmlY/vxyMQz2rGlNSjZpxNQYBe1gmQv7al171qOIhgyO9k7D5AKlgeTCSPKk+LHhj5ZyIdmEub9oNg==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -3525,9 +3525,9 @@ regenerator-runtime@^0.13.4:
   integrity sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==
 
 regexp.prototype.flags@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/regexp.prototype.flags/-/regexp.prototype.flags-1.3.1.tgz#7ef352ae8d159e758c0eadca6f8fcb4eef07be26"
-  integrity sha512-JiBdRBq91WlY7uRJ0ds7R+dU02i6LKi8r3BuQhNXn+kmeLN+EfHhfjqMRis1zJxnlu88hq/4dx0P2OP3APRTOA==
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/regexp.prototype.flags/-/regexp.prototype.flags-1.3.2.tgz#ea664a0cf7fecf6bf811a84a06ba88c52b38a5a6"
+  integrity sha512-uaro52GSI5be7+ssxjxxnLlleDBN3VHIWQHvBhfeeSXRQkuV/0Jo/hBU+omYH6NUkM+LYpTHnRRf2W/v+x7LzQ==
   dependencies:
     call-bind "^1.0.2"
     define-properties "^1.1.3"
@@ -4358,9 +4358,9 @@ vite-plugin-inspect@^0.3.6:
     ufo "^0.7.9"
 
 vite@^2.7.0:
-  version "2.7.10"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.7.10.tgz#d12c4c10e56a0ecf7890cb529c15996c6111218f"
-  integrity sha512-KEY96ntXUid1/xJihJbgmLZx7QSC2D4Tui0FdS0Old5OokYzFclcofhtxtjDdGOk/fFpPbHv9yw88+rB93Tb8w==
+  version "2.7.12"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.7.12.tgz#7784ab19e7ff98f6a192d2d7d877480a8c2b7e7d"
+  integrity sha512-KvPYToRQWhRfBeVkyhkZ5hASuHQkqZUUdUcE3xyYtq5oYEPIJ0h9LWiWTO6v990glmSac2cEPeYeXzpX5Z6qKQ==
   dependencies:
     esbuild "^0.13.12"
     postcss "^8.4.5"
