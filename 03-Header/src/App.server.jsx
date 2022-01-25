@@ -9,9 +9,7 @@ import NotFound from './components/NotFound.server';
 import CartProvider from './components/header/CartProvider.client';
 import LoadingFallback from './components/header/LoadingFallback';
 
-export default function App({log, ...serverState}) {
-  const pages = import.meta.globEager('./pages/**/*.server.[jt]sx');
-
+export default function App({log, pages, ...serverState}) {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <ShopifyServerProvider shopifyConfig={shopifyConfig} {...serverState}>
