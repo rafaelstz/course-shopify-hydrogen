@@ -1,5 +1,6 @@
 import {useShopQuery, flattenConnection} from '@shopify/hydrogen';
 import gql from 'graphql-tag';
+import {Suspense} from 'react';
 
 function CallToAction({url, label}) {
   return (

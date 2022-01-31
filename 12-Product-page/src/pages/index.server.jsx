@@ -11,51 +11,31 @@ import Layout from '../components/Layout.server';
 import FeaturedCollection from '../components/home/FeaturedCollection';
 import ProductCard from '../components/product/ProductCard';
 import Welcome from '../components/home/Welcome.server';
+import {Suspense} from 'react';
 
-function ProductGrid({productCollection}) {
-  const featuredProducts = productCollection
-    ? flattenConnection(productCollection.products)
-    : null;
-
+export default function Index({country = {isoCode: 'US'}}) {
   return (
-    <div className="p-10 mb-5">
-      {productCollection ? (
-        <>
-          <div className="flex justify-between items-center mb-8 text-xl font-medium">
-            <span className="text-black font-bold uppercase w-full md:w-auto text-center">
-              {productCollection.title}
-            </span>
-            <span className="hidden md:inline-flex">
-              <Link
-                to={`/collections/${productCollection.handle}`}
-                className="text-tertiary hover:underline capitalize"
-              >
-                See all
-              </Link>
-            </span>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProducts.map((product) => (
-              <div key={product.id}>
-                <ProductCard product={product} />
-              </div>
-            ))}
-          </div>
-          <div className="md:hidden text-center">
-            <Link
-              to={`/collections/${productCollection.handle}`}
-              className="text-tertiary capitalize text-xl"
-            >
-              See all
-            </Link>
-          </div>
-        </>
-      ) : null}
-    </div>
+    <Layout hero={<Welcome />}>
+      <div className="relative mb-12">
+        <Suspense fallback={<BoxFallback />}>
+          <FeaturedProductsBox country={country} />
+        </Suspense>
+        <Suspense fallback={<BoxFallback />}>
+          <FeaturedCollectionBox country={country} />
+        </Suspense>
+        <Suspense fallback={<BoxFallback />}>
+          <FeaturedProductsBox country={country} collection={1} />
+        </Suspense>
+      </div>
+    </Layout>
   );
 }
 
-export default function Index({country = {isoCode: 'US'}}) {
+function BoxFallback() {
+  return <div className="p-12 mb-10 h-40"></div>;
+}
+
+function FeaturedProductsBox({country, collection = 0}) {
   const {data} = useShopQuery({
     query: QUERY,
     variables: {
@@ -64,20 +44,62 @@ export default function Index({country = {isoCode: 'US'}}) {
   });
 
   const collections = data ? flattenConnection(data.collections) : [];
-  const featuredProductsCollection = collections[0];
-  const secondProductsCollection = collections[1];
+  const featuredProductsCollection = collections[collection];
+  const featuredProducts = featuredProductsCollection
+    ? flattenConnection(featuredProductsCollection.products)
+    : null;
+
+  return (
+    <div className="p-12 mb-10">
+      {featuredProductsCollection ? (
+        <>
+          <div className="flex justify-between items-center mb-8 text-xl font-medium">
+            <span className="text-black font-bold uppercase w-full md:w-auto text-center">
+              {featuredProductsCollection.title}
+            </span>
+            <span className="hidden md:inline-flex">
+              <Link
+                to={`/collections/${featuredProductsCollection.handle}`}
+                className="text-tertiary hover:underline capitalize"
+              >
+                Shop all
+              </Link>
+            </span>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-0">
+            {featuredProducts.map((product) => (
+              <div key={product.id}>
+                <ProductCard product={product} />
+              </div>
+            ))}
+          </div>
+          <div className="md:hidden text-center">
+            <Link
+              to={`/collections/${featuredProductsCollection.handle}`}
+              className="text-tertiary capitalize text-xl"
+            >
+              Shop all
+            </Link>
+          </div>
+        </>
+      ) : null}
+    </div>
+  );
+}
+
+function FeaturedCollectionBox({country}) {
+  const {data} = useShopQuery({
+    query: QUERY,
+    variables: {
+      country: country.isoCode,
+    },
+  });
+
+  const collections = data ? flattenConnection(data.collections) : [];
   const featuredCollection =
     collections && collections.length > 1 ? collections[1] : collections[0];
 
-  return (
-    <Layout hero={<Welcome />}>
-      <div className="relative mb-12">
-        <ProductGrid productCollection={featuredProductsCollection} />
-        <FeaturedCollection collection={featuredCollection} />
-        <ProductGrid productCollection={secondProductsCollection} />
-      </div>
-    </Layout>
-  );
+  return <FeaturedCollection collection={featuredCollection} />;
 }
 
 const QUERY = gql`
