@@ -4,6 +4,7 @@
   "version": "0.10.1",
   "license": "MIT",
   "private": true,
+  "main": "dist/worker/worker.js",
   "scripts": {
     "dev": "vite",
     "lint": "npm-run-all lint:*",
@@ -33,6 +34,7 @@
     "vite": "^2.7.1"
   },
   "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.2.0",
     "@headlessui/react": "^1.4.1",
     "@shopify/hydrogen": "^0.10.1",
     "body-parser": "^1.19.1",
