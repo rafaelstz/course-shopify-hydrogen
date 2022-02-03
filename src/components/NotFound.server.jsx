@@ -7,7 +7,7 @@ import gql from 'graphql-tag';
 
 import Layout from './Layout.server';
 import Button from './Button.client';
-import ProductCard from './ProductCard';
+import ProductCard from './product/ProductCard';
 
 /**
  * A server component that defines the content to display when a page isn't found (404 error)

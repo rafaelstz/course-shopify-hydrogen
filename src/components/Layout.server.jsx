@@ -3,12 +3,13 @@ import {
   useShopQuery,
   flattenConnection,
   LocalizationProvider,
+  CacheHours,
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
 
-import Header from './Header.client';
-import Footer from './Footer.server';
-import Cart from './Cart.client';
+import Header from './header/Header.client';
+import Footer from './footer/Footer.server';
+import Cart from './header/Cart.client';
 import {Suspense} from 'react';
 
 /**
@@ -20,17 +21,15 @@ export default function Layout({children, hero}) {
     variables: {
       numCollections: 3,
     },
-    cache: {
-      maxAge: 60,
-      staleWhileRevalidate: 60 * 10,
-    },
+    cache: CacheHours(),
+    preload: '*',
   });
   const collections = data ? flattenConnection(data.collections) : null;
   const products = data ? flattenConnection(data.products) : null;
   const storeName = data ? data.shop.name : '';
 
   return (
-    <LocalizationProvider>
+    <LocalizationProvider preload="*">
       <div className="absolute top-0 left-0">
         <a
           href="#mainContent"
@@ -58,7 +57,7 @@ export default function Layout({children, hero}) {
 }
 
 const QUERY = gql`
-  query indexContent($numCollections: Int!) {
+  query layoutContent($numCollections: Int!) {
     shop {
       name
     }
