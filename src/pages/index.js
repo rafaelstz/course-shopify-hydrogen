@@ -1,10 +1,13 @@
 import * as React from "react"
 import Gdpr from "../components/gdpr";
+import Seo from "../components/seo";
 
 // markup
 const IndexPage = () => {
 
   return (
+    <>
+    <Seo title="Home" description="Description" />
     <main>
       <title>Home Page</title>
       <h1>
@@ -21,6 +24,7 @@ const IndexPage = () => {
       />
       <Gdpr/>
     </main>
+    </>
   )
 }
 
