@@ -1,6 +1,6 @@
 import * as React from "react"
 import CookieConsent, { Cookies } from "react-cookie-consent"
-import { useLocation } from "@reach/router" // this helps tracking the location
+import { useLocation } from "@reach/router"
 import { initializeAndTrack } from 'gatsby-plugin-gdpr-cookies'
 
 // markup
