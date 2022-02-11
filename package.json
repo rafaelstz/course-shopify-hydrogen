@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "gatsby": "^4.7.1",
+    "gatsby-plugin-gdpr-cookies": "^2.0.8",
     "gatsby-plugin-image": "^2.7.0",
     "gatsby-plugin-manifest": "^4.7.0",
     "gatsby-plugin-netlify-cms": "^6.7.0",
@@ -27,8 +28,15 @@
     "gatsby-transformer-sharp": "^4.7.0",
     "netlify-cms-app": "^2.15.66",
     "react": "^17.0.1",
+    "react-cookie-consent": "^7.3.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "sass": "^1.49.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "gatsby-plugin-postcss": "^5.7.0",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.0.21"
   }
 }
