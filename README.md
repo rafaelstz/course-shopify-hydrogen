@@ -1,5 +1,5 @@
 # Course Shopify Hydrogen Developer 2022
-## Learn to build headless projects based on a Figma layout and become Hydrogen fullstack developer
+### Learn to build headless projects and become a Hydrogen full stack developer
 
 <div align="center">
   <p align="center">
