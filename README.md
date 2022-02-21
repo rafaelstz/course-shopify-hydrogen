@@ -3,7 +3,7 @@
 
 <div align="center">
   <p align="center">
-    <a href="https://rafaelcg.com/course-shopify-hydrogen-developer-2022/">🔥 Course</a> | <a href="https://course-shopify-hydrogen.rafaelcg.workers.dev">🔎 Live Demo Store</a>
+    <a href="https://rafaelcg.com/course-shopify-hydrogen-developer-2022">🔥 Course</a> | <a href="https://course-shopify-hydrogen.rafaelcg.com">🔎 Live Demo Store</a>
   </p>
 </div>
 
