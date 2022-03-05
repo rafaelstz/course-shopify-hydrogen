@@ -1,7 +1,8 @@
 # Apply updates to the folders
 
-# yarn create hydrogen-app
-# cp -rv test/* 01-Fundamentals/
+# yarn create hydrogen-app test -s
+# rm -rf 01-Fundamentals
+# mv test 01-Fundamentals
 # git diff > mypatch.patch
 
 cp mypatch.patch 02-Components.patch && sed -i '' 's/01-Fundamentals/02-Components/g' ./02-Components.patch && patch -p1 < ./02-Components.patch && \
