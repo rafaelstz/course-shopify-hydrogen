@@ -20,7 +20,7 @@ export default function ProductCard({product}) {
           {selectedVariant.image ? (
             <Image
               className="bg-white absolute w-full h-full transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain scale-125 hover:scale-150"
-              image={selectedVariant.image}
+              data={selectedVariant.image}
             />
           ) : null}
           {!selectedVariant?.availableForSale && (

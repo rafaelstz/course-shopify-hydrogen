@@ -13,7 +13,7 @@ export default function Footer({collection, product}) {
             <ul className="mt-8 space-y-4">
               <li className="text-sm font-medium text-white hover:text-gray-200">
                 <a
-                  href="https://github.com/Shopify/hydrogen/discussions"
+                  href="https://github.com/rafaelstz/course-shopify-hydrogen/discussions"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center"
@@ -79,24 +79,32 @@ export default function Footer({collection, product}) {
             </ul>
           </div>
           <div>
-            <h2 className="text-md text-white font-medium uppercase mb-4">Docs</h2>
+            <h2 className="text-md text-white font-medium uppercase mb-4">Extra pages</h2>
             <ul className="mt-8 space-y-4">
               <li className="flex items-center text-sm font-medium text-white hover:text-gray-200">
-                <a href="https://shopify.dev/custom-storefronts/hydrogen">
-                  Hydrogen overview
+                <a
+                  href="https://rafaelcg.com/course-shopify-hydrogen-developer-2022"
+                  title="Shopify Hydrogen Course Page"
+                  target="_blank" rel="noreferrer"
+                >
+                  Shopify Hydrogen Course
                 </a>
               </li>
               <li className="flex items-center text-sm font-medium text-white hover:text-gray-200">
-                <a href="https://shopify.dev/custom-storefronts/hydrogen/reference">
-                  Hydrogen reference
+                <a
+                  href="https://rafaelcg.com"
+                  title="Instructor website"
+                  target="_blank" rel="noreferrer"
+                >
+                  Rafael Corrêa Gomes
                 </a>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div className="py-6 px-4 md:px-8 bg-gray-50">
-        <p className="text-gray-600">© 2021 Shopify</p>
+      <div className="py-6 px-4 md:px-8 bg-gray-50 text-center">
+        <p className="text-gray-600">© {new Date().getFullYear()} Shopify</p>
       </div>
     </footer>
   );
