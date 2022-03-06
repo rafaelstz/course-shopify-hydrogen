@@ -1,7 +1,15 @@
+const {colors} = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      colors: {
+        'primary': '#000000',
+        'secondary': '#595423',
+        'tertiary': '#9CAF23',
+        'quaternary': '#847D7F',
+      },
       typography: (theme) => ({
         DEFAULT: {
           css: {

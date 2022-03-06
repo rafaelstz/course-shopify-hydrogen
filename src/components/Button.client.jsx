@@ -6,10 +6,12 @@ const DEFAULT_CLASSES =
 const VARIANT_CLASSES = {
   primary: 'text-white bg-gray-900 hover:bg-gray-800 active:bg-gray-700',
   secondary: 'bg-white hover:bg-gray-50 active:bg-gray-100 border border-black',
+  tertiary: 'text-white bg-gray-900 hover:bg-gray-800 active:bg-gray-700 rounded-full',
 };
 
 export const BUTTON_PRIMARY_CLASSES = `${DEFAULT_CLASSES} ${VARIANT_CLASSES.primary}`;
 export const BUTTON_SECONDARY_CLASSES = `${DEFAULT_CLASSES} ${VARIANT_CLASSES.secondary}`;
+export const BUTTON_TERTIARY_CLASSES = `${DEFAULT_CLASSES} ${VARIANT_CLASSES.tertiary}`;
 
 const ExternalIcon = () => (
   <svg
