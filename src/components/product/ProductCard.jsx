@@ -1,7 +1,7 @@
 import {Image, Link} from '@shopify/hydrogen';
 
 import MoneyCompareAtPrice from './MoneyCompareAtPrice.client';
-import MoneyPrice from '../MoneyPrice.client';
+import MoneyPrice from './MoneyPrice.client';
 
 /**
  * A shared component that displays a single product to allow buyers to quickly identify a particular item of interest
@@ -20,7 +20,7 @@ export default function ProductCard({product}) {
           {selectedVariant.image ? (
             <Image
               className="bg-white absolute w-full h-full transition-all duration-500 ease-in-out transform bg-center bg-cover object-center object-contain scale-125 hover:scale-150"
-              image={selectedVariant.image}
+              data={selectedVariant.image}
             />
           ) : null}
           {!selectedVariant?.availableForSale && (

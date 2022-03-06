@@ -4,6 +4,7 @@ import {
   useShopQuery,
   flattenConnection,
   RawHtml,
+  Seo,
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
 
@@ -33,6 +34,7 @@ export default function Collection({
       country: country.isoCode,
       numProducts: collectionProductCount,
     },
+    preload: true,
   });
 
   if (data?.collection == null) {
@@ -45,6 +47,8 @@ export default function Collection({
 
   return (
     <Layout hero={<FreeShippingBar msg={'Free shipping on orders over $50'} />}>
+      {/* the seo object will be expose in API version 2022-04 or later */}
+      <Seo type="collection" data={{seo: {}, ...collection}} />
       <h1 className="font-bold text-4xl md:text-5xl text-gray-900 mb-6 mt-6">
         {collection.title}
       </h1>
@@ -52,7 +56,6 @@ export default function Collection({
       <p className="text-sm text-secondary mt-5 mb-5">
         {products.length} {products.length > 1 ? 'products' : 'product'}
       </p>
-
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
         {products.map((product) => (
           <li key={product.id}>
@@ -85,8 +88,13 @@ const QUERY = gql`
     collection(handle: $handle) {
       id
       title
+      description
       descriptionHtml
-
+      image {
+        url
+        width
+        height
+      }
       products(first: $numProducts) {
         edges {
           node {

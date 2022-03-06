@@ -1,19 +1,27 @@
-import handleEvent from '@shopify/hydrogen/worker';
-import entrypoint from './src/entry-server.jsx';
-// eslint-disable-next-line node/no-missing-import
-import indexHtml from './dist/client/index.html?raw';
+// If the request path matches any of your assets, then use the `getAssetFromKV`
+// function from `@cloudflare/kv-asset-handler` to serve it. Otherwise, call the
+// `handleRequest` function, which is imported from your `App.server.jsx` file,
+// to return a Hydrogen response.
 import {getAssetFromKV} from '@cloudflare/kv-asset-handler';
+import handleRequest from './src/App.server';
+import indexTemplate from './dist/client/index.html?raw';
 
-async function assetHandler(event, url) {
+function isAsset(url) {
+  // Update this RE to fit your assets
+  return /\.(png|jpe?g|gif|css|js|svg|ico|map)$/i.test(url.pathname);
+}
+
+async function handleAsset(url, event) {
   const response = await getAssetFromKV(event, {});
 
+  // Custom cache-control for assets
   if (response.status < 400) {
     const filename = url.pathname.split('/').pop();
 
     const maxAge =
       filename.split('.').length > 2
         ? 31536000 // hashed asset, will never be updated
-        : 86400; // favico and other public assets
+        : 86400; // favicon and other public assets
 
     response.headers.append('cache-control', `public, max-age=${maxAge}`);
   }
@@ -21,21 +29,22 @@ async function assetHandler(event, url) {
   return response;
 }
 
-addEventListener('fetch', (event) => {
+async function handleEvent(event) {
   try {
-    event.respondWith(
-      handleEvent(event, {
-        entrypoint,
-        indexTemplate: indexHtml,
-        assetHandler,
-        cache: caches.default,
-      })
-    );
+    const url = new URL(event.request.url);
+
+    if (isAsset(url)) {
+      return await handleAsset(url, event);
+    }
+
+    return await handleRequest(event.request, {
+      indexTemplate,
+      cache: caches.default,
+      context: event,
+    });
   } catch (error) {
-    event.respondWith(
-      new Response(error.message || error.toString(), {
-        status: 500,
-      })
-    );
+    return new Response(error.message || error.toString(), {status: 500});
   }
-});
+}
+
+addEventListener('fetch', (event) => event.respondWith(handleEvent(event)));

@@ -7,9 +7,12 @@ zone_id = ""
 compatibility_date = "2022-01-28"
 compatibility_flags = ["streams_enable_constructors"]
 
+[env.production]
+route = "course-shopify-hydrogen.rafaelcg.com/*"
+
 [site]
 bucket = "dist/client"
-entry-point = "."
+entry-point = "dist/worker"
 
 [build]
 upload.format = "service-worker"
