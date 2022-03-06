@@ -1,6 +1,5 @@
 import {useShopQuery, flattenConnection} from '@shopify/hydrogen';
 import gql from 'graphql-tag';
-import {Suspense} from 'react';
 
 function CallToAction({url, label}) {
   return (
@@ -18,7 +17,7 @@ function CallToAction({url, label}) {
  * A server component that displays the content on the homepage of the Hydrogen app
  */
 export default function Welcome() {
-  const {data} = useShopQuery({query: QUERY});
+  const {data} = useShopQuery({query: QUERY, preload: true});
   const collections = data && flattenConnection(data.collections);
   const firstCollection = collections[0] ? collections[0].handle : '';
 
