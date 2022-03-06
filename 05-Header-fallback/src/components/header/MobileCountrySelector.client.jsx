@@ -2,13 +2,15 @@ import {useCallback} from 'react';
 import {useAvailableCountries, useCountry} from '@shopify/hydrogen/client';
 import {Listbox} from '@headlessui/react';
 
-import {ArrowIcon, CheckIcon} from './CurrencySelector.client';
+import {ArrowIconMobile, CheckIcon} from './CountrySelector.client';
 
 /**
- * A client component that selects the appropriate currency to display for products on a mobile storefront
+ * A client component that selects the appropriate country to display for products on a mobile storefront
  */
-export default function MobileCurrencySelector() {
-  const countries = useAvailableCountries();
+export default function MobileCountrySelector() {
+  const countries = [...useAvailableCountries()].sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
   const [selectedCountry, setSelectedCountry] = useCountry();
 
   const setCountry = useCallback(
@@ -21,20 +23,20 @@ export default function MobileCurrencySelector() {
   );
 
   return (
-    <div className="text-black mt-8 rounded border border-gray-200 w-full">
+    <div className="mt-8 rounded border border-gray-200 w-full text-black">
       <Listbox onChange={setCountry}>
         {({open}) => (
           <>
             <Listbox.Button className="w-full flex justify-between text-sm items-center py-5 px-7">
-              {selectedCountry.currency.isoCode}
-              <ArrowIcon isOpen={open} color="black" />
+              {selectedCountry.name}
+              <ArrowIconMobile isOpen={open} />
             </Listbox.Button>
             <Listbox.Options className="w-full px-3 pb-2 text-lg">
               <Listbox.Option
                 disabled
                 className="font-medium px-4 pb-4 w-full text-left uppercase"
               >
-                Currency
+                Country
               </Listbox.Option>
               {countries.map((country) => {
                 const isSelected = country.isoCode === selectedCountry.isoCode;
@@ -46,7 +48,7 @@ export default function MobileCurrencySelector() {
                           active ? 'bg-gray-100' : null
                         }`}
                       >
-                        {country.currency.isoCode}
+                        {country.name}
                         {isSelected ? <CheckIcon /> : null}
                       </div>
                     )}
