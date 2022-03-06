@@ -4,6 +4,8 @@ import {
   ProductProviderFragment,
   Image,
   Link,
+  Seo,
+  CacheDays,
 } from '@shopify/hydrogen';
 import gql from 'graphql-tag';
 
@@ -16,6 +18,9 @@ import {Suspense} from 'react';
 export default function Index({country = {isoCode: 'US'}}) {
   return (
     <Layout hero={<Welcome />}>
+      <Suspense fallback={null}>
+        <SeoForHomepage />
+      </Suspense>
       <div className="relative mb-12">
         <Suspense fallback={<BoxFallback />}>
           <FeaturedProductsBox country={country} />
@@ -31,6 +36,31 @@ export default function Index({country = {isoCode: 'US'}}) {
   );
 }
 
+function SeoForHomepage() {
+  const {
+    data: {
+      shop: {
+        name: shopName,
+        primaryDomain: {url: shopUrl},
+      },
+    },
+  } = useShopQuery({
+    query: SEO_QUERY,
+    cache: CacheDays(),
+    preload: true,
+  });
+
+  return (
+    <Seo
+      type="homepage"
+      data={{
+        title: shopName,
+        url: shopUrl,
+      }}
+    />
+  );
+}
+
 function BoxFallback() {
   return <div className="bg-white p-12 shadow-xl rounded-xl mb-10 h-40"></div>;
 }
@@ -41,6 +71,7 @@ function FeaturedProductsBox({country}) {
     variables: {
       country: country.isoCode,
     },
+    preload: true,
   });
 
   const collections = data ? flattenConnection(data.collections) : [];
@@ -93,6 +124,7 @@ function FeaturedCollectionBox({country}) {
     variables: {
       country: country.isoCode,
     },
+    preload: true,
   });
 
   const collections = data ? flattenConnection(data.collections) : [];
@@ -101,6 +133,18 @@ function FeaturedCollectionBox({country}) {
 
   return <FeaturedCollection collection={featuredCollection} />;
 }
+
+const SEO_QUERY = gql`
+  query homeShopInfo {
+    shop {
+      name
+      description
+      primaryDomain {
+        url
+      }
+    }
+  }
+`;
 
 const QUERY = gql`
   query indexContent(
