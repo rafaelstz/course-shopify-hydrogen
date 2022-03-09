@@ -49,7 +49,7 @@ export default function Header({collections, storeName}) {
             </Link>
             <Navigation collections={collections} storeName={storeName} />
             <div className="flex">
-              <div className="flex items-center mr-8">
+              <div className="items-center mr-8 hidden lg:block">
                 <CountrySelector />
               </div>
               <CartToggle
