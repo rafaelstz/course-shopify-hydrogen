@@ -9,7 +9,7 @@ export default function FeaturedCollection({collection}) {
       {collection.image ? (
         <Image width="622" height="465" data={collection.image} />
       ) : null}
-      <div className="text-center md:text-left px-10 py-10 lg:py-0">
+      <div className="text-center px-10 py-10 lg:py-0">
         <h2 className="text-secondary text-3xl font-bold mb-5">
           {collection.title}
         </h2>
