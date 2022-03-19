@@ -1,0 +1,14 @@
+# Commands to start on workspace startup
+tasks:
+  - init: cd 01-Fundamentals; yarn install
+    command: cd 01-Fundamentals; yarn build; yarn dev
+# Ports to expose on workspace startup
+ports:
+  - port: 3000
+    onOpen: open-preview
+vscode:
+  extensions:
+    - graphql.vscode-graphql
+    - dbaeumer.vscode-eslint
+    - esbenp.prettier-vscode
+    - bradlc.vscode-tailwindcss
