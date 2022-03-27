@@ -9,14 +9,14 @@ export default function FeaturedCollection({collection}) {
       {collection.image ? (
         <Image width="622" height="465" data={collection.image} />
       ) : null}
-      <div className="px-10 py-10 lg:py-0">
-        <h2 className="text-gray-700 text-3xl font-bold mb-5">
+      <div className="text-center px-10 py-10 lg:py-0">
+        <h2 className="text-secondary text-3xl font-bold mb-5">
           {collection.title}
         </h2>
-        <p className="text-lg text-gray-500 mb-6">{collection.description}</p>
+        <p className="text-lg text-secondary mb-6">{collection.description}</p>
         <Link
           to={`/collections/${collection.handle}`}
-          className="inline-block bg-gray-900 text-white text-lg font-medium rounded-md py-4 px-16 uppercase"
+          className="border border-black font-bold hover:bg-secondary hover:text-white hover:border-secondary inline-block text-black text-lg rounded-full py-4 px-16 uppercase"
         >
           Shop Collection
         </Link>
