@@ -65,7 +65,7 @@ function BoxFallback() {
   return <div className="bg-white p-12 shadow-xl rounded-xl mb-10 h-40"></div>;
 }
 
-function FeaturedProductsBox({country}) {
+function FeaturedProductsBox({country, collection = 0}) {
   const {data} = useShopQuery({
     query: QUERY,
     variables: {
@@ -75,7 +75,7 @@ function FeaturedProductsBox({country}) {
   });
 
   const collections = data ? flattenConnection(data.collections) : [];
-  const featuredProductsCollection = collections[0];
+  const featuredProductsCollection = collections[collection];
   const featuredProducts = featuredProductsCollection
     ? flattenConnection(featuredProductsCollection.products)
     : null;
