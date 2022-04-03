@@ -41,7 +41,7 @@ export default function Welcome() {
 
 const QUERY = gql`
   query welcomeContent {
-    collections(first: 250) {
+    collections(first: 3) {
       edges {
         node {
           handle
