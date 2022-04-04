@@ -1,5 +1,4 @@
 import {
-  Image,
   useShopQuery,
   flattenConnection,
   LocalizationProvider,
@@ -47,7 +46,7 @@ export default function Layout({children, hero}) {
         <main role="main" id="mainContent" className="relative bg-gray-50">
           {hero}
           <div className="mx-auto max-w-7xl p-4 md:py-5 md:px-8">
-            {children}
+            <Suspense fallback={null}>{children}</Suspense>
           </div>
         </main>
         <Footer collection={collections[0]} product={products[0]} />
@@ -69,7 +68,11 @@ const QUERY = gql`
           id
           title
           image {
-            ...ImageFragment
+            id
+            url
+            altText
+            width
+            height
           }
         }
       }
@@ -82,5 +85,4 @@ const QUERY = gql`
       }
     }
   }
-  ${Image.Fragment}
 `;

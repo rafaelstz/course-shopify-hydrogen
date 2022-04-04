@@ -14,7 +14,7 @@ export default function LoadingFallback() {
               <OpenIcon />
             </div>
             <p className="font-bold uppercase text-3xl tracking-widest">
-              Snowdevil
+              Hydrogen Course
             </p>
             <div className="hidden lg:block w-16" />
             <CartIcon />
