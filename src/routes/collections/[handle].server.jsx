@@ -6,6 +6,14 @@ import Layout from '../../components/Layout.server';
 import ProductCard from '../../components/product/ProductCard';
 import NotFound from '../../components/NotFound.server';
 
+function FreeShippingBar({msg}) {
+  return (
+    <div className="bg-secondary text-center px-4 py-3">
+      <span className="text-sm text-white">{msg}</span>
+    </div>
+  );
+}
+
 export default function Collection({
   country = {isoCode: 'US'},
   collectionProductCount = 24,
@@ -31,7 +39,7 @@ export default function Collection({
   const hasNextPage = data.collection.products.pageInfo.hasNextPage;
 
   return (
-    <Layout>
+    <Layout hero={<FreeShippingBar msg={'Free shipping on orders over $50'} />}>
       {/* the seo object will be expose in API version 2022-04 or later */}
       <Seo type="collection" data={collection} />
       <h1 className="font-bold text-4xl md:text-5xl text-gray-900 mb-6 mt-6">
@@ -41,7 +49,7 @@ export default function Collection({
         dangerouslySetInnerHTML={{__html: collection.descriptionHtml}}
         className="text-lg"
       />
-      <p className="text-sm text-gray-500 mt-5 mb-5">
+      <p className="text-sm text-secondary mt-5 mb-5">
         {products.length} {products.length > 1 ? 'products' : 'product'}
       </p>
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">

@@ -33,12 +33,6 @@ export default function ProductCard({product}) {
 
         <span className="text-black font-semibold mb-0.5">{product.title}</span>
 
-        {product.vendor && (
-          <p className="text-gray-900 font-medium text-sm mb-0.5">
-            {product.vendor}
-          </p>
-        )}
-
         <div className="flex ">
           {selectedVariant.compareAtPriceV2 && (
             <Suspense fallback={null}>
