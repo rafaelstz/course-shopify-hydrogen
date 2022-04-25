@@ -26,7 +26,7 @@ export default function Gallery() {
 
   return (
     <div
-      className="gap-4 flex md:grid md:grid-cols-2 overflow-x-scroll no-scrollbar scroll-snap-x scroll-smooth h-[485px] md:h-auto place-content-start"
+      className="p-4 gap-4 flex md:grid md:grid-cols-2 overflow-x-scroll no-scrollbar scroll-snap-x scroll-smooth h-[485px] md:h-auto place-content-start"
       tabIndex="-1"
     >
       <Image
@@ -44,7 +44,7 @@ export default function Gallery() {
           <MediaFile
             tabIndex="0"
             key={med.id || med.image.id}
-            className="w-[80vw] md:w-auto h-full md:h-auto object-cover object-center transition-all snap-start border border-gray-200 flex-shrink-0 rounded-lg"
+            className="w-[80vw] md:w-auto h-full md:h-auto object-cover object-center transition-all snap-start flex-shrink-0 rounded-lg"
             data={med}
             options={{
               height: '485',
