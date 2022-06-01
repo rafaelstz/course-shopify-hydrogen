@@ -19,3 +19,12 @@ cp mypatch.patch 12-Product-page.patch && sed -i '' 's/01-Fundamentals/12-Produc
 cp mypatch.patch 13-Page-not-found.patch && sed -i '' 's/01-Fundamentals/13-Page-not-found/g' ./13-Page-not-found.patch && patch -p1 < ./13-Page-not-found.patch 
 
 rm -rf ./**/*.orig
+
+
+# Moving files to folder structure
+mkdir -p src/components/{category,footer,header,home,product}
+mv src/components/LoadMoreProducts.client.jsx src/components/category/
+mv src/components/Footer.server.jsx src/components/footer/
+mv src/components/{Cart.client.jsx,CartIcon.jsx,CartIconWithItems.client.jsx,CartProvider.client.jsx,CartToggle.client.jsx,CartUIProvider.client.jsx,CountrySelector.client.jsx,Header.client.jsx,LoadingFallback.jsx,MobileCountrySelector.client.jsx,MobileNavigation.client.jsx,Navigation.client.jsx,OpenIcon.jsx} src/components/header/
+mv src/components/{FeaturedCollection.jsx,Welcome.server.jsx} src/components/home/
+mv src/components/{Gallery.client.jsx,MoneyCompareAtPrice.client.jsx,MoneyPrice.client.jsx,ProductCard.jsx,ProductDetails.client.jsx,ProductOptions.client.jsx} src/components/product/
